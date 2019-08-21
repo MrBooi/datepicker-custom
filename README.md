@@ -1,7 +1,5 @@
 # Date Picker Assessment
 
-[![Build Status](https://travis-ci.org/Sibabalwe-Qamata/datepicker.svg?branch=master)](https://travis-ci.org/Sibabalwe-Qamata/datepicker)
-
 ### Demo Links
 
 #### Deployed via AWS Amplify
