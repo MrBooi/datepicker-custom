@@ -24,4 +24,11 @@ describe('The Date Picker functionality Unit Test Cases', function()
        assert.equal(dateSelector.getMonthDayNumber(1,2019),'28');
       });
 
+      it('It should return an array with all the months in a year.',
+      function() {
+        let dateSelector = datePicker();
+        let monthsList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        assert.deepEqual(dateSelector.getMonthsList(),monthsList);
+       });
+
 });
