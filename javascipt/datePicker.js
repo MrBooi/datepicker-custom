@@ -1,6 +1,11 @@
 
 function datePicker() {
-    // Returns true or false ... 
+
+    let months = {
+        'January':'31', 'February':'28', 'March':'31', 'April':'30', 'May':'31', 'June':'30', 'July':'31', 'August':'31', 'September':'30', 'October':'31', 'November':'30', 'December':'31'
+      } 
+    let monthsList = Object.keys(months);
+
     function isLeapYear(year){
         return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
     }
@@ -27,10 +32,6 @@ function datePicker() {
     }
 
     function monthDays(monthIndex, yearToCheck){
-        let months = {
-          'January':'31', 'February':'28', 'March':'31', 'April':'30', 'May':'31', 'June':'30', 'July':'31', 'August':'31', 'September':'30', 'October':'31', 'November':'30', 'December':'31'
-        } 
-        let monthsList = Object.keys(months);
             if(isLeapYear(yearToCheck)){
                 months["February"] = '29';
                 let monthsListLeap = Object.keys(months);
@@ -42,11 +43,21 @@ function datePicker() {
             return months[choosenMonth];
             }
     }
+
+    function monthsArray (){
+            return monthsList;
+    }
+
+    function selectedMonth(monthSelected){
+        let selectedMth = monthsList[monthSelected];
+        return selectedMth;
+    }
      return {
         getLeapYear: isLeapYear,
         getFormatedDate : formatedDate,
         getElementPath : checkElementPath,
-        getMonthDayNumber :monthDays
-
+        getMonthDayNumber :monthDays,
+        getMonthsList : monthsArray,
+        getSelectedMonth : selectedMonth
     }
 }

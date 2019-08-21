@@ -23,20 +23,14 @@ let selectedDay = day;
 let selectedMonth = month;
 let selectedYear = year;
 
-// Store Months
-let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-
-monthElem.textContent = months[month] + ' ' + year;
+let monthsList = dateSelector.getMonthsList();
+monthElem.textContent = monthsList[month] + ' ' + year;
 
 selectedDateElem.textContent =  dateSelector.getFormatedDate(date);
 selectedDateElem.dataset.value = selectedDate;
 
-getDates();
-
-let daysInMonth = dateSelector.getMonthDayNumber(selectedMonth, selectedYear);
-console.log("Current Month", daysInMonth);
-
+let daysInMonthCurrent = dateSelector.getMonthDayNumber(month, year);
+getDates(daysInMonthCurrent);
 // Logic functions
 function toggleDateSelected (element) {
 	if (!dateSelector.getElementPath(element.path, 'dates')) {
@@ -45,13 +39,11 @@ function toggleDateSelected (element) {
 }
 
 function getDates(element){
-    daysElem.innerHTML = '';
-    let amount_days = 31;
-
-	if (month == 1) {
-		amount_days = 28;
-    }
-	for (let i = 0; i < amount_days; i++) {
+	daysElem.innerHTML = '';
+	let dayNumberPerMonth = parseInt(element);
+   
+	
+	for (let i = 0; i < dayNumberPerMonth ; i++) {
 		const dayElem = document.createElement('div');
 		dayElem.classList.add('day');
 		dayElem.textContent = i + 1;
@@ -67,13 +59,10 @@ function getDates(element){
 			selectedYear = year;
 
 			selectedDateElem.textContent =  dateSelector.getFormatedDate(selectedDate);
-            selectedDateElem.dataset.value = selectedDate;
-
-           
-
-			getDates();
+			selectedDateElem.dataset.value = selectedDate;
+			let daysInMonthSelected = dateSelector.getMonthDayNumber(selectedMonth, selectedYear);
+			getDates(daysInMonthSelected);
 		});
-
 		daysElem.appendChild(dayElem);
 	}
 
@@ -85,11 +74,11 @@ function nextMonth (element){
 		month = 0;
 		year++;
     }
-    
-    let daysInMonth = dateSelector.getMonthDayNumber(month, year);
-    console.log("Next Month: ",daysInMonth);
-	monthElem.textContent = months[month] + ' ' + year;
-	getDates();
+    let daysInMonthNext = dateSelector.getMonthDayNumber(month, year);
+	monthElem.textContent = monthsList[month] + ' ' + year;
+	let checker = dateSelector.getMonthDayNumber(month);
+	console.log("Next Month :", checker);
+	getDates(daysInMonthNext);
 }
 
 function previousMonth(element) {
@@ -98,10 +87,10 @@ function previousMonth(element) {
 		month = 11;
 		year--;
     }
-    let daysInMonth = dateSelector.getMonthDayNumber(month, year);
-    console.log("Previous Month: ",daysInMonth);
-	monthElem.textContent = months[month] + ' ' + year;
-	getDates();
+    let daysInMonthPrev = dateSelector.getMonthDayNumber(month, year);
+	monthElem.textContent = monthsList[month] + ' ' + year;
+	getDates(daysInMonthPrev);
+	
 }
 
 dateSelectorElem.addEventListener('click', toggleDateSelected);
