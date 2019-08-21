@@ -34,6 +34,8 @@ selectedDateElem.dataset.value = selectedDate;
 
 getDates();
 
+let daysInMonth = dateSelector.getMonthDayNumber(selectedMonth, selectedYear);
+console.log("Current Month", daysInMonth);
 
 // Logic functions
 function toggleDateSelected (element) {
@@ -48,8 +50,7 @@ function getDates(element){
 
 	if (month == 1) {
 		amount_days = 28;
-	}
-
+    }
 	for (let i = 0; i < amount_days; i++) {
 		const dayElem = document.createElement('div');
 		dayElem.classList.add('day');
@@ -68,6 +69,8 @@ function getDates(element){
 			selectedDateElem.textContent =  dateSelector.getFormatedDate(selectedDate);
             selectedDateElem.dataset.value = selectedDate;
 
+           
+
 			getDates();
 		});
 
@@ -81,7 +84,10 @@ function nextMonth (element){
 	if (month > 11) {
 		month = 0;
 		year++;
-	}
+    }
+    
+    let daysInMonth = dateSelector.getMonthDayNumber(month, year);
+    console.log("Next Month: ",daysInMonth);
 	monthElem.textContent = months[month] + ' ' + year;
 	getDates();
 }
@@ -91,7 +97,9 @@ function previousMonth(element) {
 	if (month < 0) {
 		month = 11;
 		year--;
-	}
+    }
+    let daysInMonth = dateSelector.getMonthDayNumber(month, year);
+    console.log("Previous Month: ",daysInMonth);
 	monthElem.textContent = months[month] + ' ' + year;
 	getDates();
 }
