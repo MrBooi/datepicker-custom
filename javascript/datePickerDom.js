@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	const prevMonthElem = document.querySelector('.date-selector .dates .month .previous-month');
 	const daysElem = document.querySelector('.date-selector .dates .days');
 
+	const dateSearch = document.querySelector('.date-selector .dates .date-search .date-input');
+	const dateSearchBtn = document.querySelector('.date-selector .dates .date-search .button-search');
+
 	//Instantiate the datePicker Factory function
 	let dateSelector = datePicker();
 	daysElem.innerHTML = '';
@@ -102,8 +105,13 @@ document.addEventListener('DOMContentLoaded', function () {
 		
 	}
 
+	const searchDate = () => {
+		let dateFormatSearch = dateSearch.value.trim();  
+		console.log("Search Date", dateFormatSearch );
+	}
 	dateSelectorElem.addEventListener('click', toggleDateSelected);
 	prevMonthElem.addEventListener('click', previousMonth);
 	nextMonthElem.addEventListener('click', nextMonth);
+	dateSearchBtn.addEventListener('click', searchDate);
 
 });
