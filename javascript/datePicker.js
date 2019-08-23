@@ -2,7 +2,7 @@
 "use strict"
 
 const datePicker = () =>{
-
+     let dayList = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
      let months = {
         'January':'31', 'February':'28', 'March':'31', 'April':'30', 'May':'31', 'June':'30', 'July':'31', 'August':'31', 'September':'30', 'October':'31', 'November':'30', 'December':'31'
       } 
@@ -41,14 +41,16 @@ const datePicker = () =>{
         return months[choosenMonth];
         }
      }
+     
      const monthsArray = () => monthsList;
-     const selectedMonth = monthSelected => monthsList[monthSelected];
+     const daySelected = dayNameIndex => dayList[dayNameIndex];
+
      return {
         getLeapYear: isLeapYear,
         getFormatedDate : formatedDate,
         getElementPath : checkElementPath,
         getMonthDayNumber :monthDays,
         getMonthsList : monthsArray,
-        getSelectedMonth : selectedMonth
+        getSelectedDay : daySelected
     }
 }

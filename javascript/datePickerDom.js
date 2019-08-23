@@ -20,16 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
 	let day = date.getDate();
 	let month = date.getMonth();
 	let year = date.getFullYear();
+	let dayNameIndex = date.getDay();
+	
 
 	let selectedDate = date;
 	let selectedDay = day;
 	let selectedMonth = month;
 	let selectedYear = year;
 
+	let dayName = dateSelector.getSelectedDay(dayNameIndex);
+
 	let monthsList = dateSelector.getMonthsList();
 	monthElem.textContent = monthsList[month] + ' ' + year;
 
-	selectedDateElem.textContent =  dateSelector.getFormatedDate(date);
+	selectedDateElem.textContent = dayName +" : "+ dateSelector.getFormatedDate(date);
 	selectedDateElem.dataset.value = selectedDate;
 
 	let daysInMonthCurrent = dateSelector.getMonthDayNumber(month, year);
@@ -59,8 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
 				selectedMonth = month;
 				selectedYear = year;
 
-				selectedDateElem.textContent =  dateSelector.getFormatedDate(selectedDate);
+				let dayNameSelected = dateSelector.getSelectedDay(selectedDate.getDay());
+				selectedDateElem.textContent = dayNameSelected +" : "+ dateSelector.getFormatedDate(selectedDate);
 				selectedDateElem.dataset.value = selectedDate;
+				
 				let daysInMonthSelected = dateSelector.getMonthDayNumber(selectedMonth, selectedYear);
 				selectedDateElem.dataset.value = selectedDate;
 				getDates(daysInMonthSelected);
@@ -81,7 +87,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		monthElem.textContent = monthsList[month] + ' ' + year;
 		
 		selectedDate = new Date(year + '-' + (month + 1) + '-' + (1));
-		selectedDateElem.textContent =  dateSelector.getFormatedDate(selectedDate);
+		let dayNameNxt = dateSelector.getSelectedDay(selectedDate.getDay());
+		selectedDateElem.textContent = dayNameNxt +" : "+ dateSelector.getFormatedDate(selectedDate);
 		
 		getDates(daysInMonthNext);
 		
@@ -98,7 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		monthElem.textContent = monthsList[month] + ' ' + year;
 	
 		selectedDate = new Date(year + '-' + (month + 1) + '-' + (1));
-		selectedDateElem.textContent =  dateSelector.getFormatedDate(selectedDate);
+		let dayNamePrev = dateSelector.getSelectedDay(selectedDate.getDay());
+		selectedDateElem.textContent = dayNamePrev +" : "+ dateSelector.getFormatedDate(selectedDate);
 		
 		getDates(daysInMonthPrev);
 		selectedDateElem.dataset.value = selectedDate;
@@ -112,6 +120,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	dateSelectorElem.addEventListener('click', toggleDateSelected);
 	prevMonthElem.addEventListener('click', previousMonth);
 	nextMonthElem.addEventListener('click', nextMonth);
-	dateSearchBtn.addEventListener('click', searchDate);
+	// dateSearchBtn.addEventListener('click', searchDate);
 
 });
