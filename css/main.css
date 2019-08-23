@@ -21,6 +21,10 @@ h1 {
 h1 span {
 	font-weight: 300;
 }
+.text-label{
+	margin: 30px 0px;
+	text-align: center;
+}
 .date-selector:hover {
 	background-color: #F3F3F3;
 }
