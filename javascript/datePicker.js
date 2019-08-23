@@ -37,11 +37,11 @@ const datePicker = () =>{
             return months[choosenMonth];
         }
         else{
-        let choosenMonth = monthsList[monthIndex];
-        return months[choosenMonth];
+       
+        return months[monthsList[monthIndex]];
         }
      }
-     
+
      const monthsArray = () => monthsList;
      const daySelected = dayNameIndex => dayList[dayNameIndex];
 

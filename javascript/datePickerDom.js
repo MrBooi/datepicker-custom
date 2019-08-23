@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				let dayNameSelected = dateSelector.getSelectedDay(selectedDate.getDay());
 				selectedDateElem.textContent = dayNameSelected +" : "+ dateSelector.getFormatedDate(selectedDate);
 				selectedDateElem.dataset.value = selectedDate;
-				
+
 				let daysInMonthSelected = dateSelector.getMonthDayNumber(selectedMonth, selectedYear);
 				selectedDateElem.dataset.value = selectedDate;
 				getDates(daysInMonthSelected);
@@ -113,13 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		
 	}
 
-	const searchDate = () => {
-		let dateFormatSearch = dateSearch.value.trim();  
-		console.log("Search Date", dateFormatSearch );
-	}
 	dateSelectorElem.addEventListener('click', toggleDateSelected);
 	prevMonthElem.addEventListener('click', previousMonth);
 	nextMonthElem.addEventListener('click', nextMonth);
-	// dateSearchBtn.addEventListener('click', searchDate);
 
 });
