@@ -10,9 +10,8 @@ This a customised datepicker that allows users to select a date from an interact
 
 ```
 #### Demo Links
-  - https://master.dm2wnyzt1ykiy.amplifyapp.com/  Or  https://sharp-pare-337b76.netlify.com/
+  - https://master.dm2wnyzt1ykiy.amplifyapp.com/  Or https://sharp-pare-337b76.netlify.com/
 
 #### Unit Tests
- Demo Link : https://master.dm2wnyzt1ykiy.amplifyapp.com/test
-    Or       https://sharp-pare-337b76.netlify.com/test
+  - https://master.dm2wnyzt1ykiy.amplifyapp.com/test Or https://sharp-pare-337b76.netlify.com/test
             
